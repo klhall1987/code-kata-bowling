@@ -34,14 +34,30 @@ class Game {
 
         $score = 0;
 
-        foreach($this->frame as $value){
-            if(in_array(10, $value)){
-                $score = $score + 10;
+        for($i = 0; $i < 1; $i++ ) {
+            foreach($this->frame as $key => $value ) {
+                //set as else state at the end of the game. 
+                //else ( array_sum($value) != 10 ) {
+                   // $score = $score + array_sum($value);
+                //Strike logic 
+                if ( $value[0] == 10) {
+
+                    $score += array_sum($value);
+
+                    if ( $value[0] == 10 && next($value) != 10 ) {
+                        $score += array_sum( $value );
+                    }
+                }
+               var_dump($value);
             }
         }
+    
+        
+               
+            
+        
 
         //testing to see if this works. 
-        var_dump( $this->frame );
 
         
 
