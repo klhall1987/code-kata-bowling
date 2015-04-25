@@ -38,7 +38,8 @@ class Game {
             foreach($this->frame as $key => $value ) {
                 //set as else state at the end of the game. 
                 //else ( array_sum($value) != 10 ) {
-                   // $score = $score + array_sum($value);
+                // $score = $score + array_sum($value);
+                
                 //Strike logic 
                 if ( $value[0] == 10) {
 
