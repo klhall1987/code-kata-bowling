@@ -34,35 +34,31 @@ class Game {
 
         $score = 0;
 
-        for($i = 0; $i < 1; $i++ ) {
-            foreach($this->frame as $key => $value ) {
-                //set as else state at the end of the game. 
-                //else ( array_sum($value) != 10 ) {
-                // $score = $score + array_sum($value);
-                
-                //Strike logic 
-                if ( $value[0] == 10) {
+        //Setting an iterator
+        for ( $i = 0; $i < count( $this->frame ); $i++ ) {
+          //Strike Logic  
+          //If the first frame is set to 10 and the first frame in the next array is not set to 10.  
+          if ( $this->frame[$i][0] == 10 && $this->frame[$i+1][0] != 10) {
 
-                    $score += array_sum($value);
+            //Sets score equal to itself then adds the current frame plus the next two rolls scores.  
+            $score += array_sum( current( $this->frame ) ) + array_sum( $this->frame[ $i + 1 ] );
 
-                    if ( $value[0] == 10 && next($value) != 10 ) {
-                        $score += array_sum( $value );
-                    }
-                }
-               var_dump($value);
+            //Spare logic
+            //If the first frame is not set to but the sum of the 2 frame equal 10
+            } elseif ($this->frame[$i][0] != 10 && array_sum( $this->frame ) == 10) {
+
+                //Sets score equal to itself then adds the current frame plus the first frame of next roll.
+                $score += array_sum( current( $this->frame ) ) + array_sum( $this->frame[$i][0] );
+
+            //add the values of other unset values. 
+            } else {
+                $score += array_sum( $this->frame[$i] );
             }
         }
-    
-        
-               
-            
-        
 
-        //testing to see if this works. 
+         var_dump( $this->frame );
 
-        
-
-    // Calculate Score Here
+    // Calculate Score Here 
 
     return $score;
     }

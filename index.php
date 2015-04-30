@@ -13,10 +13,13 @@
 
     //added name and score of bowler.
     echo $bowler->name . "&lsquo;s score is: ";
-    $bowler->bowl( [ 10, 0 ] );
-    $bowler->bowl( [ 5, 4 ] );
-    $bowler->bowl( [ 5, 4 ] );
-    $bowler->bowl( [ 10, 0 ] );
+    $bowler->bowl( [ 10 , 0 ] );
+    $bowler->bowl( [ 10 , 0 ] );
+    $bowler->bowl( [ 5 , 4 ] );
+    $bowler->bowl( [ 10 , 0 ] );
+    //added a 5th frame to fix offset issue.
+    $bowler->bowl( [ 0 , 0 ] );
+
 
     echo $bowler->score();
 
